@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #ffffff;
+  --color-ivory: #fdf6ec;
+  --color-ink: #21170f;
+  --color-ink-soft: #5e5145;
+  --color-accent: #f27a1a;
+  --color-accent-deep: #b34708;
+  --color-accent-pale: #ffd9a8;
+  --color-rule: #f3d2ae;
+
+  --font-display: var(--font-bodoni), "Bodoni MT", Didot, serif;
+  --font-script: var(--font-pinyon), "Snell Roundhand", cursive;
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-plate: 0 34px 60px -34px rgb(150 62 8 / 0.5), 0 10px 22px -14px rgb(150 62 8 / 0.28);
+}
+
+:root {
+  --foil: linear-gradient(120deg, #e8651a 0%, #fbc956 26%, #f27a1a 50%, #fdd98a 72%, #ee6c1c 100%);
+  --foil-conic: conic-gradient(
+    from 20deg,
+    #e8651a,
+    #fdd98a 14%,
+    #f27a1a 30%,
+    #fbc956 46%,
+    #d9560f 60%,
+    #fdd98a 76%,
+    #f27a1a 90%,
+    #e8651a
+  );
+  color-scheme: light;
+}
+
+html {
+  scroll-padding-top: 5.5rem;
+  scrollbar-color: var(--color-accent) var(--color-ivory);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  caret-color: var(--color-accent-deep);
+}
+
+::selection {
+  background: var(--color-accent-pale);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+@utility foil {
+  background-image: var(--foil);
+}
+
+@utility foil-conic {
+  background-image: var(--foil-conic);
+}
+
+@utility foil-rule {
+  height: 1px;
+  background-image: linear-gradient(90deg, transparent, #f27a1a 18%, #ffd9a8 50%, #f27a1a 82%, transparent);
+}
+
+@utility link-accent {
+  color: var(--color-accent-deep);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-pale);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color 0.3s var(--ease-out-expo);
+  &:hover {
+    text-decoration-color: var(--color-accent-deep);
+  }
+}
